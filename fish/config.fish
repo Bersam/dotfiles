@@ -9,9 +9,14 @@ set -x PATH $PATH /usr/bin
 set -x PATH $PATH /bin
 set -x PATH $PATH /usr/sbin
 set -x PATH $PATH /sbin
+set -x PATH $PATH /home/bersam/ADT/sdk/platform-tools
+set -x PATH $PATH /home/bersam/ADT/sdk/tools
+set -x PATH $PATH /home/bersam/ADT/ndk
+set -x PATH $PATH /home/bersam/.gem/ruby/2.0.0/bin
 # }}}
 # ENV variables{{{
 setenv EDITOR vim
+setenv ANDROID_HOME /home/bersam/ADT/sdk
 # }}}
 # bin path in home {{{
 set -x HOME_BIN_PATH ~/bin
@@ -33,4 +38,6 @@ alias p3='python3'
 alias vi='vim'
 # wget
 alias wget='wget -c'
+# windows
+alias windows='sudo ntpd -qg; sudo hwclock -w'
 # }}}
