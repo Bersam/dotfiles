@@ -18,6 +18,9 @@ set -x PATH $PATH /home/bersam/.gem/ruby/2.0.0/bin
 setenv EDITOR vim
 setenv ANDROID_HOME /home/bersam/ADT/sdk
 # }}}
+# node_path{{{
+set -x NODE_PATH $NODE_PATH /usr/lib/node_modules
+# }}}
 # bin path in home {{{
 set -x HOME_BIN_PATH ~/bin
 # }}}
