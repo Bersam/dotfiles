@@ -21,3 +21,4 @@
 /emacs/elpa/
 /emacs/history
 /emacs/session.*
+/emacs/*#*

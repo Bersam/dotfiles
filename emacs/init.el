@@ -56,6 +56,16 @@ re-downloaded in order to locate PACKAGE."
  ;; If there is more than one, they won't work right.
  )
 
+;; auto-complete
+(require-package 'auto-complete)
+(require 'auto-complete-config)
+
+;; Set TAB to auto-complete
+(ac-set-trigger-key "TAB")
+(define-key ac-mode-map  [(control tab)] 'auto-complete)
+(define-key ac-mode-map  [(control tab)] 'auto-complete)
+
+
 ;; skewer-mode
 (require-package 'js2-mode)
 (require-package 'simple-httpd)
