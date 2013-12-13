@@ -46,3 +46,7 @@ tmux/
 vim/
 ---------------------
 > ln -s /home/$USER/dotfiles/vim /home/$USER/.vim
+
+emacs/
+---------------------
+> ln -s /home/$USER/dotfiles/emacs /home/$USER/.emacs.d
