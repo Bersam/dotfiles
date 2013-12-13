@@ -17,3 +17,7 @@
 /komodo/*.sqlite
 /komodo/*.tmp
 /komodo/prefs.xml
+# emacs
+/emacs/elpa/
+/emacs/history
+/emacs/session.*
