@@ -28,3 +28,7 @@ set copyindent " use same indents for next line
 set foldcolumn=2 " columns on right side reserved for showing fold levels
 set foldmethod=marker " use { { { } } } to fold
 " }}}
+" 21 command line editing {{{
+set wildmenu
+set wildmode=full
+" }}}
