@@ -1,9 +1,10 @@
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(add-to-list 'package-archives 
+(add-to-list 'package-archives
     '("marmalade" .
       "http://marmalade-repo.org/packages/"))
+(add-to-list 'load-path "~/.emacs.d/custom")
 ;;; from purcell/emacs.d
 (defun require-package (package &optional min-version no-refresh)
   "Install given PACKAGE, optionally requiring MIN-VERSION.
@@ -40,6 +41,8 @@ re-downloaded in order to locate PACKAGE."
 (require-package 'simple-httpd)
 (require-package 'skewer-mode)
 (require-package 'ac-js2)
+(require-package 'auctex)
+(require-package 'magit)
 
 (setq evil-search-module 'evil-search
       evil-want-C-u-scroll t
@@ -65,6 +68,8 @@ re-downloaded in order to locate PACKAGE."
                            (auto-complete-mode 1))
                        ))
 (real-global-auto-complete-mode t)
+
+;;(autoload 'poor-mans-bidi-mode "poor-mans-bidi" "" t)
 
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (require 'simple-httpd)
