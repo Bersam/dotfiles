@@ -23,3 +23,5 @@
 /emacs/session.*
 /emacs/*#*
 /emacs/*.dat
+/emacs/.cache/
+/emacs/custom/
