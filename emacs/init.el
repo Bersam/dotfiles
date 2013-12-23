@@ -161,7 +161,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 (require-package 'auctex)
 
-; Latex Configs
+;; Latex Configs
 ;(defun my-ac-tex-setup()
 ;  (setq ac-sources (append '(ac-source-auctex-bibs) ac-sources)))
 ;(add-hook 'TeX-mode-hook 'my-ac-tex-setup)
@@ -170,6 +170,11 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (let ((acc (read-lines "~/.my-erc-account")))
   (setq erc-nick (car acc))  
   (setq erc-password (nth 1 acc)))
+
+;; DuckDuckGo
+(require 'ddg)
+(require 'ddg-search)
+(require 'ddg-mode)
 
 (require-package 'color-theme-solarized)
 
