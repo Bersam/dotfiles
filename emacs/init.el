@@ -176,6 +176,10 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (require 'ddg-search)
 (require 'ddg-mode)
 
+;; Org-Pomodoro
+(require-package 'org-pomodoro)
+; (setq org-pomodoro-play-ticking-sounds t)
+
 ;;Afternoon Theme
 (require-package 'afternoon-theme)
 (custom-set-variables
