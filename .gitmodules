@@ -1,3 +1,6 @@
 [submodule "vim/bundle/vundle"]
 	path = vim/bundle/vundle
 	url = https://github.com/gmarik/vundle.git
+[submodule "tmux/tmux-tony"]
+	path = tmux/tmux-tony
+	url = https://github.com/tony/tmux-config.git
