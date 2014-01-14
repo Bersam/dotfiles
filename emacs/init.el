@@ -57,7 +57,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
  (if (and delete-selection-mode transient-mark-mode mark-active)
      (setq deactivate-mark  t)
    (when (get-buffer "Completions") (delete-windows-on "Completions"))
-   (abort-recursive-edit))) 
+   (abort-recursive-edit)))
 
 (define-key evil-normal-state-map [escape] 'keyboard-quit)
 (define-key evil-visual-state-map [escape] 'keyboard-quit)
@@ -66,6 +66,9 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
 (define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
 (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
+
+;; Bind newline-and-indent to RET
+(define-key global-map (kbd "RET") 'newline-and-indent)
 
 ;; Q = Kill window
 (defun my-window-killer ()
@@ -168,13 +171,19 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 ;; Read .my-erc-account
 (let ((acc (read-lines "~/.my-erc-account")))
-  (setq erc-nick (car acc))  
+  (setq erc-nick (car acc))
   (setq erc-password (nth 1 acc)))
 
 ;; DuckDuckGo
 (require 'ddg)
 (require 'ddg-search)
 (require 'ddg-mode)
+
+;; Auto Indentation
+(require 'indent-file)
+(add-hook 'emacs-lisp-mode-hook 'indent-file-when-save)
+(add-hook 'emacs-lisp-mode-hook 'indent-file-when-visit)
+
 
 ;; Org-Pomodoro
 (require-package 'org-pomodoro)
