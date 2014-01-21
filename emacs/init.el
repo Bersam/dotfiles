@@ -2,8 +2,8 @@
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (add-to-list 'package-archives
-    '("marmalade" .
-      "http://marmalade-repo.org/packages/"))
+             '("marmalade" .
+               "http://marmalade-repo.org/packages/"))
 (add-to-list 'load-path "~/.emacs.d/custom")
 ;;; from purcell/emacs.d
 (defun require-package (package &optional min-version no-refresh)
@@ -50,14 +50,14 @@ re-downloaded in order to locate PACKAGE."
 (evil-mode t)
 
 (defun minibuffer-keyboard-quit ()
- "Abort recursive edit.
+  "Abort recursive edit.
 In Delete Selection mode, if the mark is active, just deactivate it;
 then it takes a second \\[keyboard-quit] to abort the minibuffer."
- (interactive)
- (if (and delete-selection-mode transient-mark-mode mark-active)
-     (setq deactivate-mark  t)
-   (when (get-buffer "Completions") (delete-windows-on "Completions"))
-   (abort-recursive-edit)))
+  (interactive)
+  (if (and delete-selection-mode transient-mark-mode mark-active)
+      (setq deactivate-mark  t)
+    (when (get-buffer "Completions") (delete-windows-on "Completions"))
+    (abort-recursive-edit)))
 
 (define-key evil-normal-state-map [escape] 'keyboard-quit)
 (define-key evil-visual-state-map [escape] 'keyboard-quit)
@@ -72,13 +72,13 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 ;; Q = Kill window
 (defun my-window-killer ()
- "closes the window, and deletes the buffer if it's the last window open."
- (interactive)
- (if (> buffer-display-count 1)
-     (if (= (length (window-list)) 1)
-         (kill-buffer)
-       (delete-window))
-   (kill-buffer-and-window)))
+  "closes the window, and deletes the buffer if it's the last window open."
+  (interactive)
+  (if (> buffer-display-count 1)
+      (if (= (length (window-list)) 1)
+          (kill-buffer)
+        (delete-window))
+    (kill-buffer-and-window)))
 
 (define-key evil-normal-state-map (kbd "Q") 'my-window-killer)
 
@@ -165,9 +165,9 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (require-package 'auctex)
 
 ;; Latex Configs
-;(defun my-ac-tex-setup()
-;  (setq ac-sources (append '(ac-source-auctex-bibs) ac-sources)))
-;(add-hook 'TeX-mode-hook 'my-ac-tex-setup)
+                                        ;(defun my-ac-tex-setup()
+                                        ;  (setq ac-sources (append '(ac-source-auctex-bibs) ac-sources)))
+                                        ;(add-hook 'TeX-mode-hook 'my-ac-tex-setup)
 
 ;; Read .my-erc-account
 (let ((acc (read-lines "~/.my-erc-account")))
@@ -184,10 +184,13 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (add-hook 'emacs-lisp-mode-hook 'indent-file-when-save)
 (add-hook 'emacs-lisp-mode-hook 'indent-file-when-visit)
 
+(autoload 'php-mode "php-mode" "Major mode for editing php code." t)
+(add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
+(add-to-list 'auto-mode-alist '("\\.inc$" . php-mode))
 
 ;; Org-Pomodoro
 (require-package 'org-pomodoro)
-; (setq org-pomodoro-play-ticking-sounds t)
+                                        ; (setq org-pomodoro-play-ticking-sounds t)
 
 ;;Afternoon Theme
 (require-package 'afternoon-theme)
