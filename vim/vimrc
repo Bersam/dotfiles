@@ -29,6 +29,6 @@ colorscheme koehler
 " }}}
 " if cwd is ~ change it to ~/works {{{
 if getcwd() == expand('$HOME')
-    cd ~/Workspace
+    cd ~/workspace
 endif
 " }}}

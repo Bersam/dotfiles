@@ -38,6 +38,11 @@ re-downloaded in order to locate PACKAGE."
 ;; Save Commands History
 (savehist-mode t)
 
+(set-fontset-font
+ "fontset-default"
+ (cons (decode-char 'ucs #x0600) (decode-char 'ucs #x06ff)) ; arabic
+ "Dejavu Sans Mono-13")
+
 ;;;;;;;;;;;;; Plugin and Packages will be added after this line ;;;;;;;;;;;;;;;;;
 (package-initialize)
 
@@ -170,9 +175,9 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
                                         ;(add-hook 'TeX-mode-hook 'my-ac-tex-setup)
 
 ;; Read .my-erc-account
-(let ((acc (read-lines "~/.my-erc-account")))
-  (setq erc-nick (car acc))
-  (setq erc-password (nth 1 acc)))
+;;(let ((acc (read-lines "~/.my-erc-account")))
+;;  (setq erc-nick (car acc))
+;;  (setq erc-password (nth 1 acc)))
 
 ;; DuckDuckGo
 (require 'ddg)
@@ -183,6 +188,10 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (require 'indent-file)
 (add-hook 'emacs-lisp-mode-hook 'indent-file-when-save)
 (add-hook 'emacs-lisp-mode-hook 'indent-file-when-visit)
+
+;; Fly Check
+(require-package 'flycheck)
+(add-hook 'after-init-hook #'global-flycheck-mode)
 
 (autoload 'php-mode "php-mode" "Major mode for editing php code." t)
 (add-to-list 'auto-mode-alist '("\\.php$" . php-mode))

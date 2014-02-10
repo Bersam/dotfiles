@@ -25,11 +25,11 @@ crontab/
 
 fish/
 ---------------------
-> ln -s /home/$USER/dotfiles/fish /home/$USER/.conf/fish
+> ln -s /home/$USER/dotfiles/fish /home/$USER/.config/fish
 
 git/
 ---------------------
-> ln -s /home/$USER/dotfiles/git /home/$USER/.conf/git
+> ln -s /home/$USER/dotfiles/git /home/$USER/.config/git
 
 hg/
 ---------------------
