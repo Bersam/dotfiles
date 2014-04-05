@@ -45,4 +45,6 @@ alias vi='vim'
 alias wget='wget -c'
 # windows
 alias windows='sudo ntpd -qg; sudo hwclock -w'
+# gnome
+alias rshell='pkill -HUP gnome-shell'
 # }}}
