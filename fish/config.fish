@@ -11,7 +11,8 @@ set -x PATH $PATH /usr/sbin
 set -x PATH $PATH /sbin
 set -x PATH $PATH /home/bersam/android/sdk/platform-tools
 set -x PATH $PATH /home/bersam/android/sdk/tools
-#set -x PATH $PATH /home/bersam/ADT/ndk
+set -x PATH $PATH /home/bersam/android/ndk
+set -x PATH $PATH /home/bersam/android/sdk/tools/proguard/bin
 set -x PATH $PATH /home/bersam/.gem/ruby/2.0.0/bin
 set -x PATH $PATH /home/bersam/.gem/ruby/2.1.0/bin
 # }}}
