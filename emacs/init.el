@@ -197,6 +197,11 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
 (add-to-list 'auto-mode-alist '("\\.inc$" . php-mode))
 
+;; Jedi.el - Python auto-completion for Emacs
+(require-package 'jedi)
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:complete-on-dot t)
+
 ;; Org-Pomodoro
 (require-package 'org-pomodoro)
                                         ; (setq org-pomodoro-play-ticking-sounds t)
