@@ -1,4 +1,5 @@
 /bin/local
+/bin/
 # fish
 /fish/fish_history
 /fish/fishd.*
