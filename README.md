@@ -23,6 +23,10 @@ crontab/
 ---------------------
 > Use crontab -e`
 
+emacs/
+---------------------
+> ln -s /home/$USER/dotfiles/emacs /home/$USER/.emacs.d
+
 fish/
 ---------------------
 > ln -s /home/$USER/dotfiles/fish /home/$USER/.config/fish
@@ -34,6 +38,10 @@ git/
 hg/
 ---------------------
 > ln -s /home/$USER/dotfiles/hg /home/$USER/.hg
+
+i3/
+---------------------
+> ln -s /home/$USER/dotfiles/i3 /home/$USER/.i3
 
 komodo/
 ---------------------
@@ -48,7 +56,3 @@ tmux/
 vim/
 ---------------------
 > ln -s /home/$USER/dotfiles/vim /home/$USER/.vim
-
-emacs/
----------------------
-> ln -s /home/$USER/dotfiles/emacs /home/$USER/.emacs.d
