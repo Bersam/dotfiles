@@ -16,6 +16,8 @@ exec "setxkbmap -layout us,ir"
 exec "setxkbmap -option 'grp:both_shift_toggle'"
 # Hide curser when incactive
 exec unclutter &
+# Add Transparency to X
+exec "/usr/bin/compton -b --config ~/.compton &"
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
@@ -43,7 +45,7 @@ bindsym $mod+Shift+q kill
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-ndesktop
 # No Idea why -dim not working for me... it must be something X related
-bindsym $mod+d exec --no-startup-id dmenu_run -i -o 0.9 -l 10 -fn 'Source Code Pro-10:normal'
+bindsym $mod+d exec --no-startup-id dmenu_run -i -o 0.9 -dim 0.15 -l 10 -fn 'Source Code Pro-10:normal'
 
 # change focus
 bindsym $mod+h focus left
