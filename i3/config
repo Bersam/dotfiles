@@ -19,10 +19,9 @@ exec "unclutter &"
 # Add Transparency to X
 exec "/usr/bin/compton -b --config ~/.compton &"
 # Run xrandr config file for dual monitor
-exec "~/dotfiles/screenlayout/home.sh"
+exec "sleep 1 && ~/dotfiles/screenlayout/home.sh"
 # Add background image using Feh
-exec "feh --bg-scale ~/Pictures/wallpaper.png"
-
+exec "sleep 1 && feh --bg-scale ~/Pictures/wallpaper.png"
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
