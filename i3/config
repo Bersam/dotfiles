@@ -42,7 +42,8 @@ bindsym $mod+Shift+q kill
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-ndesktop
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop -i -o 0.9 -dim 0.15 -l 10 -fn 'Source Code Pro-10:normal'
+# No Idea why -dim not working for me... it must be something X related
+bindsym $mod+d exec --no-startup-id dmenu_run -i -o 0.9 -l 10 -fn 'Source Code Pro-10:normal'
 
 # change focus
 bindsym $mod+h focus left
