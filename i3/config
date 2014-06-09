@@ -11,6 +11,13 @@
 
 set $mod Mod1
 
+
+# Keyboard layouts
+exec "setxkbmap -layout us,ir"
+exec "setxkbmap -option 'grp:alt_shift_toggle'"
+# Hide curser when incactive
+exec unclutter &
+
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
 font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -160,8 +167,18 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         status_command i3status
+        position bottom
+        hidden_state hide
 }
 
+# Some Options
+hide_edge_borders both
+new_window pixel 0
+new_float pixel 2
+workspace_layout tabbed
+focus_follows_mouse no
+force_focus_wrapping yes
+workspace_auto_back_and_forth yes
 
 # Assignments
 assign [class="Vlc"] → 
