@@ -99,6 +99,18 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+# workspaces
+## LVDS1
+workspace  output LVDS1
+workspace  output LVDS1
+workspace  output LVDS1
+workspace 7 output LVDS1
+workspace 6 output LVDS1
+## VGA1
+workspace  output VGA1
+workspace 9 output VGA1
+workspace 8 output VGA1
+
 # switch to workspace
 bindsym $mod+1 workspace 
 bindsym $mod+2 workspace 
@@ -108,7 +120,7 @@ bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+0 workspace 
 
 bindsym F1 workspace 
 bindsym F2 workspace 
@@ -118,7 +130,7 @@ bindsym F6 workspace 6
 bindsym F7 workspace 7
 bindsym F8 workspace 8
 bindsym F9 workspace 9
-bindsym F10 workspace 10
+bindsym F10 workspace 
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 
@@ -129,7 +141,7 @@ bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+0 move container to workspace 
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -195,7 +207,7 @@ bindsym XF86AudioLowerVolume exec "amixer -D pulse sset Master '5%-'"
 bindsym XF86AudioMute exec "amixer -D pulse set Master toggle"
 
 # Assignments
-assign [class="Vlc"] → 
+assign [class="Vlc"] → 
 assign [class="Amarok"] → 
 assign [class="Firefox"] → 
 assign [class="Chromium"] → 
