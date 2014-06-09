@@ -160,3 +160,13 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status
 }
+
+
+# Assignments
+assign [class="Vlc"] → 
+assign [class="Spotify"] → 
+assign [class="Firefox"] → 
+assign [class="Chromium"] → 
+assign [class="Eclipse"] → 
+assign [class="Firefox"] → 
+assign [class="Pidgin"] → 
