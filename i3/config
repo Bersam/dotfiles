@@ -50,13 +50,9 @@ bindsym $mod+Shift+q kill
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-ndesktop
 # No Idea why -dim not working for me... it must be something X related
 # bindsym $mod+d exec --no-startup-id dmenu_run -i -o 0.9 -dim 0.15 -l 10 -fn 'Source Code Pro-10:normal'
-
-# Set Options for dmenu-launch in AUR
-exec "set -x DMENU_OPTIONS '-o 0.9 -dim 0.15 -l 10 -f'"
-bindsym $mod+d exec --no-startup-id dmenu-launch
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -o 0.9 -dim 0.15 -l 10 -fn 'Source Code Pro-10:normal'"
 
 # change focus
 bindsym $mod+h focus left
