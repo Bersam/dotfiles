@@ -12,16 +12,15 @@
 set $mod Mod4
 
 # Keyboard layouts
-exec "setxkbmap -layout us,ir"
-exec "setxkbmap -option 'grp:both_shift_toggle'"
+#exec "setxkbmap -layout us,ir; setxkbmap -option 'grp:both_shift_toggle'"
+exec "setxkbmap us,ir, -option 'grp:switch,grp:shifts_toggle,caps:escape,terminate:ctrl_alt_bksp'"
 # Hide curser when incactive
 exec "unclutter &"
 # Add Transparency to X
 exec "/usr/bin/compton -b --config ~/.compton &"
 # Run xrandr config file for dual monitor
-exec "sleep 1 && ~/dotfiles/screenlayout/home.sh"
 # Add background image using Feh
-exec "sleep 1 && feh --bg-scale ~/Pictures/wallpaper.png"
+exec "~/dotfiles/screenlayout/home.sh && feh --bg-scale ~/Pictures/wallpaper.png"
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
@@ -38,6 +37,9 @@ floating_modifier $mod
 
 # start a terminal
 # bindsym $mod+Return exec i3-sensible-terminal
+
+# screen lock
+bindsym $mod+Mod1+l exec "i3lock-wrapper"
 
 # go to urgent
 bindsym $mod+Return [urgent=latest] focus
@@ -107,7 +109,6 @@ bindsym $mod+a focus parent
 # workspaces
 ## LVDS1
 workspace  output LVDS1
-workspace  output LVDS1
 workspace  output LVDS1
 workspace 7 output LVDS1
 workspace 6 output LVDS1
@@ -115,6 +116,7 @@ workspace 6 output LVDS1
 workspace  output VGA1
 workspace  output VGA1
 workspace 8 output VGA1
+workspace  output VGA1
 
 # switch to workspace
 bindsym $mod+1 workspace 
@@ -210,9 +212,15 @@ bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master '3%+'"
 bindsym XF86AudioLowerVolume exec "amixer -D pulse sset Master '5%-'"
 bindsym XF86AudioMute exec "amixer -D pulse set Master toggle"
 
+# Assign tiling to Pidgin
+
+for_window [instance="Pidgin"] move right, move right
+for_window [instance="Pidgin"] resize shrink width 40 ppt
+
 # Assignments
 assign [class="Vlc"] → 
 assign [class="Amarok"] → 
+assign [class="Spotify"] → 
 assign [class="Firefox"] → 
 assign [class="Chromium"] → 
 assign [class="Eclipse"] → 
