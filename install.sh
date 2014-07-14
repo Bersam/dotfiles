@@ -29,6 +29,9 @@ mkdir -p "/home/$USER/.komodoedit/8.0"
 ln -sf "$PWD/komodo" "/home/$USER/.komodoedit/8.0"
 
 # tmux/
+mkdir -p "/home/$USER/.tmux"
+mkdir -p "/home/$USER/.byobu"
+
 ln -sf "$PWD/tmux/tmux.conf" "/home/$USER/.tmux.conf"
 ln -sf "$PWD/tmux/tmux.conf" "/home/$USER/.byobu/.tmux.conf"
 
