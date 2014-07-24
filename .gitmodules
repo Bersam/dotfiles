@@ -4,3 +4,6 @@
 [submodule "tmux/tmux-tony"]
 	path = tmux/tmux-tony
 	url = https://github.com/tony/tmux-config.git
+[submodule "zsh/oh-my-zsh"]
+	path = zsh/oh-my-zsh
+	url = git://github.com/robbyrussell/oh-my-zsh.git
