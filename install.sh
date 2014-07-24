@@ -40,3 +40,7 @@ rm -rf "/home/$USER/.vim"
 ln -sf "$PWD/vim" "/home/$USER/.vim"
 rm -f "/home/$USER/.vimrc"
 ln -sf "$PWD/vim/vimrc" "/home/$USER/.vimrc"
+
+# zsh/
+ln -sf "$PWD/zsh/zshrc" "/home/$USER/.zshrc"
+ln -sf "$PWD/zsh/oh-my-zsh" "/home/$user/.oh-my-zsh"

@@ -78,5 +78,16 @@ fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-#
+
+# All
+alias fuck="sudo !!"
+
+# Archlinux
+alias pacman="sudo pacman"
+alias systemctl="sudo systemctl"
+
+# Ubuntu
+alias apt-get="sudo apt-get"
+alias service="sudo service"
+
 toilet "Bersam Rock" --gay
