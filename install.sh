@@ -36,11 +36,13 @@ ln -sf "$PWD/tmux/tmux.conf" "/home/$USER/.tmux.conf"
 ln -sf "$PWD/tmux/tmux.conf" "/home/$USER/.byobu/.tmux.conf"
 
 # vim/
-rm -rf "/home/$USER/.vim"
+mv "/home/$USER/.vim" "/home/$USER/.vim.bakup"
 ln -sf "$PWD/vim" "/home/$USER/.vim"
-rm -f "/home/$USER/.vimrc"
+mv "/home/$USER/.vimrc" "/home/$USER/.vimrc.bakup"
 ln -sf "$PWD/vim/vimrc" "/home/$USER/.vimrc"
 
 # zsh/
 ln -sf "$PWD/zsh/zshrc" "/home/$USER/.zshrc"
 ln -sf "$PWD/zsh/oh-my-zsh" "/home/$user/.oh-my-zsh"
+mv "/home/$USER/.oh-my-zsh/custom" "/home/$USER/.oh-my-zsh/custom.backup"
+ln -sf "$PWD/zsh/custom" "/home/$user/.oh-my-zsh/custom"
