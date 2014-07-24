@@ -56,3 +56,8 @@ tmux/
 vim/
 ---------------------
 > ln -s /home/$USER/dotfiles/vim /home/$USER/.vim
+
+zsh/oh-my-zsh/
+---------------------
+> ln -s /home/$USER/dotfiles/zsh/oh-my-zsh /home/$USER/.oh-my-zsh
+> ln -s /home/$USER/dotfiles/zsh/zshrc /home/$USER/.zshrc
