@@ -17,7 +17,7 @@ exec --no-startup-id "unclutter &"
 exec --no-startup-id "/usr/bin/compton -b --config ~/.compton &"
 # Run xrandr config file for dual monitor
 # Add background image using Feh
-exec --no-startup-id "sleep 2 && ~/dotfiles/screenlayout/home.sh && feh --bg-scale ~/Pictures/wallpaper.png"
+exec --no-startup-id "sleep 2 && ~/dotfiles/screenlayout/home.sh && feh --bg-scale ~/Pictures/wallpaper"
 # Keyboard layouts
 #exec "setxkbmap -layout us,ir; setxkbmap -option 'grp:both_shift_toggle'"
 exec --no-startup-id "setxkbmap us,ir, -option 'grp:switch,grp:shifts_toggle,caps:escape,terminate:ctrl_alt_bksp'"
@@ -39,7 +39,7 @@ floating_modifier $mod
 # bindsym $mod+Return exec i3-sensible-terminal
 
 # screen lock
-bindsym $mod+Mod1+l exec "i3lock-wrapper"
+bindsym $mod+Mod1+l exec --no-startup-id "i3lock-wrapper"
 
 # go to urgent
 bindsym $mod+Return [urgent=latest] focus
@@ -155,7 +155,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -210,13 +210,13 @@ force_focus_wrapping yes
 workspace_auto_back_and_forth no
 
 # Bind Multimedia Keys
-bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master '3%+'"
-bindsym XF86AudioLowerVolume exec "amixer -D pulse sset Master '5%-'"
-bindsym XF86AudioMute exec "amixer -D pulse set Master toggle"
-bindsym XF86AudioPlay exec "playerctl play-pause"
-bindsym XF86AudioStop exec "playerctl stop"
-bindsym XF86AudioNext exec "playerctl next"
-bindsym XF86AudioPrev exec "playerctl previous"
+bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer -D pulse sset Master '3%+'"
+bindsym XF86AudioLowerVolume exec --no-startup-id "amixer -D pulse sset Master '5%-'"
+bindsym XF86AudioMute exec --no-startup-id "amixer -D pulse set Master toggle"
+bindsym XF86AudioPlay exec --no-startup-id "playerctl play-pause"
+bindsym XF86AudioStop exec --no-startup-id "playerctl stop"
+bindsym XF86AudioNext exec --no-startup-id "playerctl next"
+bindsym XF86AudioPrev exec --no-startup-id "playerctl previous"
 
 
 # Assign tiling to Pidgin
@@ -226,6 +226,7 @@ for_window [instance="Pidgin"] resize shrink width 40 ppt
 
 # Assignments
 assign [class="Vlc"] → 
+assign [class="XBMC"] → 
 assign [class="Amarok"] → 
 assign [class="Spotify"] → 
 assign [class="Firefox"] → 
