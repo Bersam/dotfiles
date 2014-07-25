@@ -43,6 +43,6 @@ ln -sf "$PWD/vim/vimrc" "/home/$USER/.vimrc"
 
 # zsh/
 ln -sf "$PWD/zsh/zshrc" "/home/$USER/.zshrc"
-ln -sf "$PWD/zsh/oh-my-zsh" "/home/$user/.oh-my-zsh"
+ln -sf "$PWD/zsh/oh-my-zsh" "/home/$USER/.oh-my-zsh"
 mv "/home/$USER/.oh-my-zsh/custom" "/home/$USER/.oh-my-zsh/custom.backup"
-ln -sf "$PWD/zsh/custom" "/home/$user/.oh-my-zsh/custom"
+ln -sf "$PWD/zsh/custom" "/home/$USER/.oh-my-zsh/custom"
