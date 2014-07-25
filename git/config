@@ -4,7 +4,7 @@
     email = bersam.k@gmail.com
 [core]
     editor = vim
-	excludesfile = /home/bersam/.gitignore
+	excludesfile = ~/.gitignore
 [alias]
     st = status
 [push]
