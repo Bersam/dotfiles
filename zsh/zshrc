@@ -79,10 +79,8 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# All
-alias fuck="sudo !!"
-
 # Archlinux
+source /usr/share/doc/pkgfile/command-not-found.zsh
 alias pacman="sudo pacman"
 alias systemctl="sudo systemctl"
 
