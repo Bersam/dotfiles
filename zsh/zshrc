@@ -88,4 +88,4 @@ alias systemctl="sudo systemctl"
 alias apt-get="sudo apt-get"
 alias service="sudo service"
 
-toilet "Bersam Rock" --gay
+toilet "Bersam Rocks" --gay --width 100

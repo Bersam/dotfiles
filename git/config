@@ -11,5 +11,3 @@
     #default = simple
 [diff]
 	external = git-meld
-[pull]
-	ff = only
