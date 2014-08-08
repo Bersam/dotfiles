@@ -13,8 +13,8 @@ vmap <space> za
 cmap W!! w !sudo tee % >/dev/null
 " }}}
 " toggle line number {{{
-noremap <silent>   <F1>      :set number!<CR>
-noremap <silent> <C-F1>      :set relativenumber!<CR>
+noremap <leader>   <1>      :set number!<CR>
+noremap <leader> <C-1>      :set relativenumber!<CR>
 inoremap <silent>   <F1> <ESC>:set number!<CR>a
 inoremap <silent> <C-F1> <ESC>:set relativenumber!<CR>a
 inoremap <silent> <C-F1> <ESC>:set relativenumber!<CR>a
