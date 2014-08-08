@@ -4,48 +4,48 @@
 # cron jobs are not included.
 
 # aria2/
-mkdir -p "/home/$USER/.aria2/"
-ln -sf "$PWD/aria2/aria2.conf" "/home/$USER/.aria2/.aria2.conf"
+mkdir -p "$HOME/.aria2/"
+ln -sf "$PWD/aria2/aria2.conf" "$HOME/.aria2/.aria2.conf"
 
 # bash/
-ln -sf "$PWD/bash/bashrc" "/home/$USER/.bashrc"
+ln -sf "$PWD/bash/bashrc" "$HOME/.bashrc"
 
 # bin/
-ln -sf "$PWD/bin" "/home/$USER/.local/bin"
+ln -sf "$PWD/bin" "$HOME/.local/bin"
 
 # compton/
 ln -sf "$PWD/compton/compton.conf" "$HOME/.compton"
 
 # fish/
-ln -sf "$PWD/fish" "/home/$USER/.config/fish"
+ln -sf "$PWD/fish" "$HOME/.config/fish"
 
 # git/
-ln -sf "$PWD/git/config" "/home/$USER/.gitconfig"
-ln -sf "$PWD/git/ignore" "/home/$USER/.gitignore"
+ln -sf "$PWD/git/config" "$HOME/.gitconfig"
+ln -sf "$PWD/git/ignore" "$HOME/.gitignore"
 git config --global core.excludesfile '~/.gitignore'
 
 # hg/
-ln -sf "$PWD/hg/hgrc" "/home/$USER/.hg"
+ln -sf "$PWD/hg/hgrc" "$HOME/.hg"
 
 # komodo/
-mkdir -p "/home/$USER/.komodoedit/8.0"
-ln -sf "$PWD/komodo" "/home/$USER/.komodoedit/8.0"
+mkdir -p "$HOME/.komodoedit/8.0"
+ln -sf "$PWD/komodo" "$HOME/.komodoedit/8.0"
 
 # tmux/
-mkdir -p "/home/$USER/.tmux"
-mkdir -p "/home/$USER/.byobu"
+mkdir -p "$HOME/.tmux"
+mkdir -p "$HOME/.byobu"
 
-ln -sf "$PWD/tmux/tmux.conf" "/home/$USER/.tmux.conf"
-ln -sf "$PWD/tmux/tmux.conf" "/home/$USER/.byobu/.tmux.conf"
+ln -sf "$PWD/tmux/tmux.conf" "$HOME/.tmux.conf"
+ln -sf "$PWD/tmux/tmux.conf" "$HOME/.byobu/.tmux.conf"
 
 # vim/
-mv "/home/$USER/.vim" "/home/$USER/.vim.bakup"
-ln -sf "$PWD/vim" "/home/$USER/.vim"
-mv "/home/$USER/.vimrc" "/home/$USER/.vimrc.bakup"
-ln -sf "$PWD/vim/vimrc" "/home/$USER/.vimrc"
+mv "$HOME/.vim" "$HOME/.vim.bakup"
+ln -sf "$PWD/vim" "$HOME/.vim"
+mv "$HOME/.vimrc" "$HOME/.vimrc.bakup"
+ln -sf "$PWD/vim/vimrc" "$HOME/.vimrc"
 
 # zsh/
-ln -sf "$PWD/zsh/zshrc" "/home/$USER/.zshrc"
-ln -sf "$PWD/zsh/oh-my-zsh" "/home/$USER/.oh-my-zsh"
-mv "/home/$USER/.oh-my-zsh/custom" "/home/$USER/.oh-my-zsh/custom.backup"
-ln -sf "$PWD/zsh/custom" "/home/$USER/.oh-my-zsh/custom"
+ln -sf "$PWD/zsh/zshrc" "$HOME/.zshrc"
+ln -sf "$PWD/zsh/oh-my-zsh" "$HOME/.oh-my-zsh"
+mv "$HOME/.oh-my-zsh/custom" "$HOME/.oh-my-zsh/custom.backup"
+ln -sf "$PWD/zsh/custom" "$HOME/.oh-my-zsh/custom"
