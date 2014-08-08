@@ -13,6 +13,9 @@ ln -sf "$PWD/bash/bashrc" "/home/$USER/.bashrc"
 # bin/
 ln -sf "$PWD/bin" "/home/$USER/.local/bin"
 
+# compton/
+ln -sf "$PWD/compton/compton.conf" "$HOME/.compton"
+
 # fish/
 ln -sf "$PWD/fish" "/home/$USER/.config/fish"
 
