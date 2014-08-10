@@ -1,6 +1,7 @@
 " general {{{
 syntax on
 let g:vim_data_path = expand("$HOME") . "/.vim/data/"
+let g:JSLintHighlightErrorLine = 0
 " }}}
 " fish {{{
 if $SHELL =~ 'bin/fish'
@@ -25,7 +26,8 @@ source ~/.vim/startup/mappings.vim
 source ~/.vim/startup/autocmd.vim
 " }}}
 " colorscheme {{{
-colorscheme koehler
+set t_Co=256
+colorscheme desert
 " }}}
 " if cwd is ~ change it to ~/works {{{
 if getcwd() == expand('$HOME')
