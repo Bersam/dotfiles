@@ -43,6 +43,8 @@ re-downloaded in order to locate PACKAGE."
  (cons (decode-char 'ucs #x0600) (decode-char 'ucs #x06ff)) ; arabic
  "Dejavu Sans Mono-13")
 
+(setq visible-bell 1)
+
 ;;;;;;;;;;;;; Plugin and Packages will be added after this line ;;;;;;;;;;;;;;;;;
 (package-initialize)
 
@@ -204,7 +206,11 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 ;; Org-Pomodoro
 (require-package 'org-pomodoro)
-                                        ; (setq org-pomodoro-play-ticking-sounds t)
+(setq org-pomodoro-play-ticking-sounds t)
+
+;; reveal.js
+(require-package 'ox-reveal)
+(require 'ox-reveal)
 
 ;;Afternoon Theme
 (require-package 'afternoon-theme)
@@ -218,7 +224,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
  '(background-mode dark)
  '(cursor-color "#839496")
  '(custom-enabled-themes (quote (afternoon)))
- '(custom-safe-themes (quote ("2283e0e235d6f00b717ccd7b1f22aa29ce042f0f845936a221012566a810773d" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" default)))
+ '(custom-safe-themes (quote ("f0ea6118d1414b24c2e4babdc8e252707727e7b4ff2e791129f240a2b3093e32" "2283e0e235d6f00b717ccd7b1f22aa29ce042f0f845936a221012566a810773d" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" default)))
  '(foreground-color "#839496"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
