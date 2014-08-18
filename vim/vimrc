@@ -27,7 +27,7 @@ source ~/.vim/startup/autocmd.vim
 " }}}
 " colorscheme {{{
 set t_Co=256
-set background=dark
+" set background=dark
 colorscheme desert
 " }}}
 " if cwd is ~ change it to ~/works {{{
