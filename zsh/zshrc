@@ -81,6 +81,7 @@ fi
 
 # Archlinux
 source /usr/share/doc/pkgfile/command-not-found.zsh
+source /home/bersam/.zshenv
 alias pacman="sudo pacman"
 alias systemctl="sudo systemctl"
 

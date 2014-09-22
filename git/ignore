@@ -1,5 +1,8 @@
 # vim:ft=gitconfig:
 
+# nohup
+nohup.out
+
 # eclipse
 .project
 .pydevproject
