@@ -25,7 +25,7 @@ crontab/
 
 emacs/
 ---------------------
-> ln -s /home/$USER/dotfiles/emacs /home/$USER/.emacs.d
+> ln -s /home/$USER/dotfiles/emacs.d /home/$USER/.emacs.d
 
 fish/
 ---------------------
