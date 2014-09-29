@@ -90,3 +90,5 @@ alias apt-get="sudo apt-get"
 alias service="sudo service"
 
 toilet "Bersam Rocks" --gay --width 100
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
