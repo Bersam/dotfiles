@@ -20,7 +20,8 @@ exec --no-startup-id "/usr/bin/compton -b --config ~/.compton &"
 exec --no-startup-id "sleep 2 && ~/dotfiles/screenlayout/home.sh && feh --bg-scale ~/Pictures/wallpaper"
 # Keyboard layouts
 #exec "setxkbmap -layout us,ir; setxkbmap -option 'grp:both_shift_toggle'"
-exec --no-startup-id "setxkbmap us,ir, -option 'grp:switch,grp:shifts_toggle,caps:escape,terminate:ctrl_alt_bksp'"
+exec --no-startup-id "setxkbmap -layout 'us,ir' -option 'grp:switch,grp:shifts_toggle,caps:escape,terminate:ctrl_alt_bksp'"
+exec --no-startup-id "perWindowLayoutD"
 # ShadowSocks
 exec --no-startup-id "sslocal -c ~/works/cyber1.conf"
 
