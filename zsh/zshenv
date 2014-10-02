@@ -1,0 +1,10 @@
+# Emacs
+PATH="$PATH:$HOME/.local/bin" # Add RVM to PATH for scripting
+
+# Ruby
+PATH="$PATH:$HOME/.rvm/bin"
+
+# Android SDK
+PATH="$PATH:$HOME/android/sdk/platform-tools"
+PATH="$PATH:$HOME/android/sdk/tools"
+ANDROID_HOME="$HOME/android/sdk/"
