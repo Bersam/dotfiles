@@ -15,4 +15,4 @@
 	url = git://github.com/zsh-users/zsh-syntax-highlighting.git
 [submodule "emacs.d"]
 	path = emacs.d
-	url = https://github.com/psamim/emacs.d
+	url = git://github.com/Bersam/emacs.d.git
