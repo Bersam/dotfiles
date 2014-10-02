@@ -16,3 +16,9 @@
 [submodule "emacs.d"]
 	path = emacs.d
 	url = https://github.com/psamim/emacs.d
+[submodule "zsh/zaw"]
+	path = zsh/zaw
+	url = https://github.com/zsh-users/zaw
+[submodule "zsh/prezto"]
+	path = zsh/prezto
+	url = https://github.com/sorin-ionescu/prezto
