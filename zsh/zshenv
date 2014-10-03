@@ -1,8 +1,9 @@
 # Emacs
-PATH="$PATH:$HOME/.local/bin" # Add RVM to PATH for scripting
+PATH="$PATH:$HOME/.local/bin"
 
 # Ruby
 PATH="$PATH:$HOME/.rvm/bin"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 # Android SDK
 PATH="$PATH:$HOME/android/sdk/platform-tools"
