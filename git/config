@@ -9,7 +9,5 @@
     st = status
 [push]
     #default = simple
-[diff]
-	external = git-meld
 [push]
 	default = simple
