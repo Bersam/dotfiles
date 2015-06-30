@@ -49,3 +49,6 @@ ln -sf "$PWD/zsh/zshrc" "$HOME/.zshrc"
 ln -sf "$PWD/zsh/oh-my-zsh" "$HOME/.oh-my-zsh"
 mv "$HOME/.oh-my-zsh/custom" "$HOME/.oh-my-zsh/custom.backup"
 ln -sf "$PWD/zsh/custom" "$HOME/.oh-my-zsh/custom"
+
+# change shell to zsh
+chsh -s $(which zsh)
