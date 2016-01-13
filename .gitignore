@@ -16,10 +16,5 @@
 /komodo/*.sqlite
 /komodo/*.tmp
 /komodo/prefs.xml
-# emacs
-/emacs/elpa/
-/emacs/history
-/emacs/session.*
-/emacs/*#*
-/emacs/*.dat
-/emacs/.cache/
+#bin
+/bin/onserver.sh
