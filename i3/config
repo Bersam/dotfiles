@@ -31,6 +31,9 @@ exec --no-startup-id "sleep 2 && ~/dotfiles/screenlayout/home.sh"
 exec --no-startup-id "setxkbmap -layout 'us,ir' -option 'grp:switch,grp:shifts_toggle,caps:escape,terminate:ctrl_alt_bksp'"
 exec --no-startup-id "perWindowLayoutD"
 
+# Set Wallpaper
+exec --no-startup-id "\systemctl --user start feh-wallpaper.service"
+
 # ShadowSocks
 exec --no-startup-id "sslocal -c ~/works/cyber2.conf"
 
@@ -254,7 +257,7 @@ for_window [class="(?i)"] focus
 # Scrathcpad
 bindsym $mod+shift+s move scratchpad
 bindsym $mod+shift+o scratchpad show
-bindsym F12 scratchpad show
+#bindsym F12 scratchpad show
 bindsym $mod+x [class="Emacs"] scratchpad show
 
 # Shortcuts
@@ -308,13 +311,13 @@ bindsym XF86MonBrightnessUp exec "xbacklight -inc 5"
 bindsym XF86MonBrightnessDown exec "xbacklight -dec 5"
 
 # Suspend
-bindsym $mod+XF86PowerOff exec \systemctl suspend
+bindsym $mod+XF86PowerOff exec "\systemctl suspend"
 
 # Keyboard Layouts
 # bindsym Mod1+Tab exec --no-startup-id keyboard.sh us ir && pkill -RTMIN+1 i3blocks
 
 # Next wallpaper
-bindsym $mod+shift+w exec \systemctl --user start feh-wallpaper.service
+bindsym $mod+shift+w exec "\systemctl --user start feh-wallpaper.service"
 
 # new_window pixel 0
 new_float none
@@ -367,5 +370,5 @@ client.focused_inactive #455057 #455057 #c7c7c7 #002b36
 client.unfocused #2d2d2d #2d2d2d #c7c7c7 #002b36
 client.urgent #dc322f #dc322f #f9f9f9 #dc322f
 
-gaps inner 3
-# smart_gaps on
+gaps inner 4
+smart_gaps on
