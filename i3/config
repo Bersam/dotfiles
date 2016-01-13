@@ -27,9 +27,6 @@ exec --no-startup-id "/usr/bin/compton -b --config ~/.compton &"
 # Run xrandr config file for dual monitor
 exec --no-startup-id "sleep 2 && ~/dotfiles/screenlayout/home.sh"
 
-# Add background image using Feh
-exec --no-startup-id "feh --bg-scale ~/Pictures/wallpaper"
-
 # Keyboard layouts
 exec --no-startup-id "setxkbmap -layout 'us,ir' -option 'grp:switch,grp:shifts_toggle,caps:escape,terminate:ctrl_alt_bksp'"
 exec --no-startup-id "perWindowLayoutD"
@@ -92,8 +89,8 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# Fullscreen vids to small sticky in corner aka picture in picture mode 
-bindsym $mod+y fullscreen disable; floating enable; resize set 422 240; sticky enable; move position 933 518 
+# Fullscreen vids to small sticky in corner aka picture in picture mode
+bindsym $mod+y fullscreen disable; floating enable; resize set 422 240; sticky enable; move position 933 518
 
 # split in horizontal orientation
 bindsym $mod+g split h
@@ -167,6 +164,7 @@ assign [class="Vlc"] → 
 assign [class="XBMC"] → 
 assign [class="Amarok"] → 
 assign [class="Spotify"] → 
+assign [class="Firefox Developer Edition"] → 
 assign [class="Firefox"] → 
 assign [class="Chromium"] → 
 assign [class="Eclipse"] → 
@@ -310,13 +308,13 @@ bindsym XF86MonBrightnessUp exec "xbacklight -inc 5"
 bindsym XF86MonBrightnessDown exec "xbacklight -dec 5"
 
 # Suspend
-bindsym $mod+XF86PowerOff exec systemctl suspend
+bindsym $mod+XF86PowerOff exec \systemctl suspend
 
 # Keyboard Layouts
 # bindsym Mod1+Tab exec --no-startup-id keyboard.sh us ir && pkill -RTMIN+1 i3blocks
 
 # Next wallpaper
-bindsym $mod+shift+w exec systemctl --user start feh-wallpaper.service
+bindsym $mod+shift+w exec \systemctl --user start feh-wallpaper.service
 
 # new_window pixel 0
 new_float none
@@ -345,7 +343,7 @@ bar {
   position bottom
   bindsym button5 nop
   bindsym button4 nop
-  tray_padding 3 
+  tray_padding 3
   separator_symbol "〉"
   workspace_buttons yes
   strip_workspace_numbers yes
@@ -353,7 +351,7 @@ bar {
   height 20
 
   colors {
-     separator #586e75 
+     separator #586e75
      background #2d2d2d
      statusline #c7c7c7
      focused_workspace  #586e75 #586e75 #ffffff
@@ -369,5 +367,5 @@ client.focused_inactive #455057 #455057 #c7c7c7 #002b36
 client.unfocused #2d2d2d #2d2d2d #c7c7c7 #002b36
 client.urgent #dc322f #dc322f #f9f9f9 #dc322f
 
-gaps inner 4
+gaps inner 3
 # smart_gaps on
