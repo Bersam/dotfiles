@@ -13,10 +13,10 @@ set $mod Mod4
 
 # Startup
 # Nm-Applet
-exec --no-startup-id nm-applet &
+exec --no-startup-id "nm-applet &"
 
 # Clipboard
-exec --no-startup-id clipit &
+exec --no-startup-id "clipit &"
 
 # Hide curser when incactive
 exec --no-startup-id "unclutter &"
@@ -36,6 +36,9 @@ exec --no-startup-id "\systemctl --user start feh-wallpaper.service"
 
 # ShadowSocks
 exec --no-startup-id "sslocal -c ~/works/cyber2.conf"
+
+# Guake
+exec --no-startup-id "guake &"
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
@@ -151,15 +154,15 @@ bindsym F9 workspace 
 bindsym F10 workspace 
 
 # move focused container to workspace
-bindsym shift+F1 move container to workspace 
-bindsym shift+F2 move container to workspace 
-bindsym shift+F3 move container to workspace 
-bindsym shift+F4 move container to workspace 
-bindsym shift+F6 move container to workspace 6
-bindsym shift+F7 move container to workspace 7
-bindsym shift+F8 move container to workspace 8
-bindsym shift+F9 move container to workspace 
-bindsym shift+F10 move container to workspace 
+bindsym $mod+shift+F1 move container to workspace 
+bindsym $mod+shift+F2 move container to workspace 
+bindsym $mod+shift+F3 move container to workspace 
+bindsym $mod+shift+F4 move container to workspace 
+bindsym $mod+shift+F6 move container to workspace 6
+bindsym $mod+shift+F7 move container to workspace 7
+bindsym $mod+shift+F8 move container to workspace 8
+bindsym $mod+shift+F9 move container to workspace 
+bindsym $mod+shift+F10 move container to workspace 
 
 
 # Assignments
@@ -174,6 +177,7 @@ assign [class="Eclipse"] → 
 assign [class="Nautilus"] → 
 assign [class="Firefox"] → 
 assign [class="Pidgin"] → 
+assign [class="Telegram"] → 
 
 # Assing floating modes
 # for_window [class="Osdlyrics"] floating enable
@@ -304,7 +308,9 @@ bindsym XF86AudioMute exec "amixer -D pulse set Master toggle & pkill -RTMIN+10 
 bindsym XF86AudioPlay exec "playerctl play-pause||mpc toggle"
 bindsym XF86AudioStop exec "playerctl stop||mpc stop"
 bindsym XF86AudioNext exec "playerctl next||mpc next"
+bindsym Control+Shift+Right exec "playerctl next||mpc next"
 bindsym XF86AudioPrev exec "playerctl previous||mpc previous"
+bindsym Control+Shift+Left exec "playerctl previous||mpc previous"
 
 # brightness control
 bindsym XF86MonBrightnessUp exec "xbacklight -inc 5"
