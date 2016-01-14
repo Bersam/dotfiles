@@ -41,11 +41,16 @@ DISABLE_AUTO_UPDATE="true"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+# ZSH
+export ZSH_TMUX_AUTOSTART=true
+
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git archlinux autojump npm nyan sudo systemd zsh-syntax-highlighting zsh-history-substring-search)
+plugins=(archlinux autojump bower cake catimg composer common-aliases \
+    docker gem gpg-agent git git-extras git-flow gradle history lol node \
+    npm nyan pass pip python pylint pyenv ssh-agent sudo systemd tmux \
+    zsh-syntax-highlighting zsh-history-substring-search)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -82,12 +87,6 @@ fi
 # Archlinux
 source /usr/share/doc/pkgfile/command-not-found.zsh
 source /home/bersam/.zshenv
-alias pacman="sudo pacman"
-alias systemctl="sudo systemctl"
-
-# Ubuntu
-alias apt-get="sudo apt-get"
-alias service="sudo service"
 
 toilet "Bersam Rocks" --gay --width 100
 
