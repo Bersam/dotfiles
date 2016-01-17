@@ -58,7 +58,7 @@ font pango: Source Code Pro Semibold, FontAwesome Regular 8
 floating_modifier $mod
 
 # screen shot
-bindsym <print> exec --no-startup-id gnome-screenshot
+bindsym --release Print exec --no-startup-id gnome-screenshot
 
 # screen lock
 bindsym $mod+Mod1+l exec --no-startup-id "i3lock-wrapper"
