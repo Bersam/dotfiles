@@ -62,6 +62,7 @@ floating_modifier $mod
 bindsym --release Print exec --no-startup-id gnome-screenshot
 
 # screen lock
+set $locker /home/bersam/dotfiles/bin/lock && sleep 1
 bindsym $mod+Mod1+l exec --no-startup-id $locker
 
 # go to urgent
