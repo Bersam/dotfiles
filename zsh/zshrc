@@ -89,6 +89,7 @@ source /usr/share/doc/pkgfile/command-not-found.zsh
 source /home/bersam/.zshenv
 
 toilet "Bersam Rocks" --gay --width 100
+# curl -s wttr.in/Isfahan | head -n7
 
 # Python
 export PYENV_ROOT="$HOME/.pyenv"
