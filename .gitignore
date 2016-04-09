@@ -18,4 +18,4 @@ komodo/*.tmp
 komodo/prefs.xml
 #bin
 bin/onserver.sh
-systemd/defaults.targets.wants/
+systemd/default.target.wants/
