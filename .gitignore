@@ -1,20 +1,21 @@
 # fish
-/fish/fish_history*
-/fish/fishd.*
+fish/fish_history*
+fish/fishd.*
 # vim
-/vim/.netrwhist
-/vim/bundle/
+vim/.netrwhist
+vim/bundle/
 !/vim/bundle/vundle
 # komodo
-/komodo/autosave/
-/komodo/codeintel/
-/komodo/XRE/
-/komodo/*.log
-/komodo/*.bak
-/komodo/*.lock
-/komodo/*.xmlc
-/komodo/*.sqlite
-/komodo/*.tmp
-/komodo/prefs.xml
+komodo/autosave/
+komodo/codeintel/
+komodo/XRE/
+komodo/*.log
+komodo/*.bak
+komodo/*.lock
+komodo/*.xmlc
+komodo/*.sqlite
+komodo/*.tmp
+komodo/prefs.xml
 #bin
-/bin/onserver.sh
+bin/onserver.sh
+systemd/defaults.targets.wants/
