@@ -40,9 +40,9 @@ exec --no-startup-id "sslocal -c ~/works/cyber3.conf"
 # Guake
 exec --no-startup-id "guake &"
 
-# Auto Lock
-set $locker xkb-switch -s us && i3lock-wrapper && sleep 1
-exec --no-startup-id xautolock -time 10 -locker '$locker'
+# Dunst
+exec --no-startup-id "dunst &"
+
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
