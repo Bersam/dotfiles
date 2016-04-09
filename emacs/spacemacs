@@ -19,7 +19,7 @@
      ;; ----------------------------------------------------------------
      (auto-completion :variables auto-completion-enable-help-tooltip t)
 
-     better-defaults
+     ;; better-defaults
      emacs-lisp
 
      (git :variables
@@ -35,9 +35,9 @@
      python
      ruby
      c-c++
-     ;;php
-     javascript
+     php
      html
+     javascript
      go
      racket
      latex
@@ -47,15 +47,15 @@
      ranger
      syntax-checking
      spell-checking
-     
+
      (evil-snipe :variables evil-snipe-enable-alternate-f-and-t-behaviors t)
      evil-commentary
 
      ;; Private:
+     bersam-defaults
      semicolon
      org-latex-classes
      org-psamim
-     
      )
 
    ;; List of additional packages that will be installed wihout being
@@ -68,7 +68,7 @@
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
    ;; are declared in a layer which is not a member of
    ;; the list `dotspacemacs-configuration-layers'
-   dotspacemacs-delete-orphan-packages t))
+   dotspacemacs-delete-orphan-packages nil))
 
 (defun dotspacemacs/init ()
   "Initialization function.
@@ -176,6 +176,8 @@ before layers configuration."
    dotspacemacs-default-package-repository nil
    )
   ;; User initialization goes here
+  (with-eval-after-load 'exec-path-from-shell
+    (exec-path-from-shell-setenv "SHELL" "/bin/bash"))
   )
 
 ;; (defun dotspacemacs/user-config ()
@@ -184,30 +186,6 @@ before layers configuration."
   "Configuration function.
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
-  (defun add-semicolon-and-go-next-line ()
-    "Add a semicolon to the end of line and go to next"
-    (interactive) ; Do the following interactively
-    (end-of-line) ; Move to the end of line
-    (insert ";") ; Add the semicolon
-    ;; (evil-next-line) ; Go to the next line
-    )
-  (define-key evil-insert-state-map ";;" 'add-semicolon-and-go-next-line)
-  (define-key evil-normal-state-map "Q" 'kill-this-buffer)
-  (define-key evil-normal-state-map "W" 'save-buffer)
-  (setq js2-basic-offset 2)
-  (evil-leader/set-key
-    "d" 'ranger)
-  
-  (set-frame-font "Ubuntu Mono 12")
-  (set-face-attribute 'default nil :font "Ubuntu Mono 12" :height 130)
-  (set-face-font 'default "Ubuntu Mono 12")
-  (set-fontset-font
-   "fontset-default"
-   (cons (decode-char 'ucs #x0600) (decode-char 'ucs #x06ff)) ; arabic
-   "B Traffic-15")
-  (add-hook 'org-mode-hook (lambda () (setq bidi-paragraph-direction 'nil)))
-  
-  (visual-line-mode t)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
