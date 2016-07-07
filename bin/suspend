@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# My screen locker
+
+# Switch to us layout to prevent problems in unlocking
+xkb-switch -s us
+
+# Locker
+# pixelate_lock
+i3lock-wrapper
+
+systemctl suspend
