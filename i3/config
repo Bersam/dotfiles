@@ -12,6 +12,12 @@
 set $mod Mod4
 
 # Startup
+
+exec --no-startup-id "synclient TapButton3=2"
+exec --no-startup-id "synclient TapButton2=3"
+exec --no-startup-id "synclient HorizTwoFingerScroll=2"
+exec --no-startup-id "syndaemon -t -K -i 2 -d &"
+
 # Nm-Applet
 exec --no-startup-id "nm-applet &"
 
@@ -33,6 +39,8 @@ exec --no-startup-id "perWindowLayoutD"
 
 # Set Wallpaper
 exec --no-startup-id "\systemctl --user start feh-wallpaper.service"
+
+exec --no-startup-id "\systemctl --user start xautolock.service"
 
 # ShadowSocks
 exec --no-startup-id "sslocal -c ~/works/cyber3.conf"
