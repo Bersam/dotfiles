@@ -8,7 +8,3 @@ xkb-switch -s us
 # Locker
 # pixelate_lock
 i3lock-wrapper
-
-# Suspend
-systemctl suspend
-# pm-suspend
