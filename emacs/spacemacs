@@ -323,28 +323,6 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-  (setq calendar-location-name "Isfahan, Iran"
-        calendar-latitude 32.65
-        calendar-longitude 51.66)
-  (setq sunshine-units 'metric)
-  (setq sunshine-show-icons t)
-
-  (prodigy-define-service
-   :name "Insta Follow Server"
-   :command "node-dev"
-   :args '("app.js")
-   :cwd "~/works/bersam/projects/instafollow/api"
-   :tags '(work instafallow)
-   :kill-signal 'sigkill
-   :kill-process-buffer-on-stop t)
-  (prodigy-define-service
-   :name "Insta Follow Redis"
-   :command "redis-server"
-   :args '("--port" "7777")
-   :cwd "~/works/bersam/projects/instafollow/api"
-   :tags '(work instafallow)
-   :kill-signal 'sigkill
-   :kill-process-buffer-on-stop t)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
