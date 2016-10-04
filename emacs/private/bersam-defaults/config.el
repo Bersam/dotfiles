@@ -13,7 +13,7 @@
 
 (setq js2-basic-offset 2)
 (evil-leader/set-key
-  "d" 'ranger)
+  "o" 'ranger)
 
 (set-frame-font "Ubuntu Mono 12")
 (set-face-attribute 'default nil :font "Ubuntu Mono 12" :height 130)
@@ -25,3 +25,5 @@
 (add-hook 'org-mode-hook (lambda () (setq bidi-paragraph-direction 'nil)))
 
 (visual-line-mode t)
+(setq-default js2-basic-offset 2
+              js-indent-level 2)

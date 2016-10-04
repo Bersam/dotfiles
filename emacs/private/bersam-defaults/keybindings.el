@@ -1,4 +1,4 @@
-(spacemacs/set-leader-keys "d" 'deer)
+(spacemacs/set-leader-keys "o" 'deer)
 
 (defun add-semicolon-and-go-next-line ()
   "Add a semicolon to the end of line and go to next"
