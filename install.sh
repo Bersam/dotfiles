@@ -10,12 +10,6 @@ ln -sf "$PWD/aria2/aria2.conf" "$HOME/.aria2/.aria2.conf"
 # bash/
 ln -sf "$PWD/bash/bashrc" "$HOME/.bashrc"
 
-# bin/
-ln -sf "$PWD/bin" "$HOME/.local/bin"
-
-# compton/
-ln -sf "$PWD/compton/compton.conf" "$HOME/.compton"
-
 # fish/
 ln -sf "$PWD/fish" "$HOME/.config/fish"
 
@@ -26,10 +20,6 @@ git config --global core.excludesfile '~/.gitignore'
 
 # hg/
 ln -sf "$PWD/hg/hgrc" "$HOME/.hg"
-
-# komodo/
-mkdir -p "$HOME/.komodoedit/8.0"
-ln -sf "$PWD/komodo" "$HOME/.komodoedit/8.0"
 
 # tmux/
 mkdir -p "$HOME/.tmux"
