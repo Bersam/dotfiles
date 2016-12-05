@@ -1,7 +1,0 @@
-#!/bin/sh
-if [[ -z $(pidof emacs) ]]
-then
-    emacs "$@"
-else
-    emacsclient -nw -c "$@"
-fi
