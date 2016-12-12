@@ -61,10 +61,10 @@ values."
      spell-checking
      spotify
      (syntax-checking :variables
-                      syntax-checking-enable-tooltips nil)
+                      syntax-checking-enable-tooltips t)
 
      ;; Configuration files
-     dockerfile
+     docker
 
      ;; Frameworks
      django
@@ -92,36 +92,34 @@ values."
      ruby
      shell-scripts
      sql
+     (typescript :variables
+                 typescript-fmt-on-save t)
      yaml
 
      ;; Source control
      (git :variables
           git-gutter-use-fringe t
-          git-magit-status-fullscreen t
-          )
+          git-magit-status-fullscreen t)
      version-control
 
      ;; Tools
      command-log
      dash
      fasd
+     org
      pandoc
      ranger
 
-     (wakatime :variables
-               wakatime-api-key  "API_KEY"
-               wakatime-cli-path "/usr/bin/wakatime")
+     ;; (wakatime :variables
+     ;;           wakatime-api-key  "146ba847-bc9d-4628-854f-3e63bc5dc2f3"
+     ;;           wakatime-cli-path "/usr/bin/wakatime")
 
      ;; Vim
      evil-commentary
      (evil-snipe :variables
                  evil-snipe-enable-alternate-f-and-t-behaviors t)
-     unimpaired
      vim-empty-lines
      vinegar
-
-     ;; Window Mangement
-     eyebrowse
 
      ;; Private:
      bersam-defaults
@@ -133,7 +131,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(editorconfig)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -209,9 +207,9 @@ values."
    ;;                       spacemacs-light)
    dotspacemacs-themes '(solarized-dark
                          solarized-light)
-                         ;; leuven
-                         ;; monokai
-                         ;; zenburn)
+   ;; leuven
+   ;; monokai
+   ;; zenburn)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
@@ -383,6 +381,52 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+  (prodigy-define-service
+    :name "Insta Follow Server"
+    :command "node-dev"
+    :args '("app.js")
+    :cwd "~/works/bersam/projects/instafollow/api"
+    :tags '(work instafollow)
+    :kill-signal 'sigkill
+    :kill-process-buffer-on-stop t)
+  (prodigy-define-service
+    :name "Insta Follow Dashboard"
+    :command "npm"
+    :args '("start")
+    :cwd "~/works/bersam/projects/instafollow/dashboard"
+    :tags '(work instafollow)
+    :kill-signal 'sigkill
+    :kill-process-buffer-on-stop t)
+  (prodigy-define-service
+    :name "Insta Follow Redis"
+    :command "redis-server"
+    :args '("--port" "7777")
+    :cwd "~/works/bersam/projects/instafollow/api"
+    :tags '(work instafollow)
+    :kill-signal 'sigkill
+    :kill-process-buffer-on-stop t)
+  (exec-path-from-shell-copy-env "SSH_AGENT_PID")
+  (exec-path-from-shell-copy-env "SSH_AUTH_SOCK")
+  (setq-default
+   ;; js2-mode
+   js2-basic-offset 2
+   ;; web-mode
+   css-indent-offset 2
+   web-mode-markup-indent-offset 2
+   web-mode-css-indent-offset 2
+   web-mode-code-indent-offset 2
+   web-mode-attr-indent-offset 2)
+  (defun my/use-eslint-from-node-modules ()
+    (let* ((root (locate-dominating-file
+                  (or (buffer-file-name) default-directory)
+                  "node_modules"))
+           (eslint (and root
+                        (expand-file-name "node_modules/eslint/bin/eslint.js"
+                                          root))))
+      (when (and eslint (file-executable-p eslint))
+        (setq-local flycheck-javascript-eslint-executable eslint))))
+
+  (add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -392,9 +436,16 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(org-agenda-files (quote ("~/Notes/todo.org")))
+ '(org-file-apps
+   (quote
+    ((auto-mode . emacs)
+     ("\\.mm\\'" . default)
+     ("\\.x?html?\\'" . default)
+     ("\\.pdf\\'" . "zathura %s"))))
  '(package-selected-packages
    (quote
-    (key-chord zeal-at-point yapfify yaml-mode xterm-color ws-butler wolfram-mode window-numbering which-key web-mode web-beautify wakatime-mode volatile-highlights uuidgen use-package typit mmt toc-org thrift tagedit stickyfunc-enhance stan-mode srefactor sql-indent spray spotify spaceline powerline smex smeargle slime slim-mode shell-pop selectric-mode scss-mode scad-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe restart-emacs rbenv ranger rainbow-mode rainbow-identifiers rainbow-delimiters qml-mode pyvenv pytest pyenv-mode py-isort projectile-rails rake prodigy popwin pony-mode pip-requirements phpunit phpcbf php-extras php-auto-yasnippets persp-mode pcre2el paradox pandoc-mode pacmacs ox-pandoc ht orgit org org-plus-contrib org-bullets open-junk-file neotree mwim multi-term move-text mmm-mode matlab-mode markdown-toc markdown-mode magit-gitflow macrostep lorem-ipsum livid-mode skewer-mode simple-httpd live-py-mode linum-relative link-hint less-css-mode json-mode json-snatcher json-reformat js2-refactor js2-mode js-doc jade-mode info+ indent-guide ido-vertical-mode ibuffer-projectile hy-mode hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation help-fns+ helm-themes helm-swoop helm-spotify multi helm-pydoc helm-projectile helm-mode-manager helm-make projectile helm-gitignore request helm-flx helm-descbinds helm-dash helm-css-scss helm-company helm-c-yasnippet helm-ag haml-mode google-translate golden-ratio gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md flyspell-correct-helm flyspell-correct flycheck-pos-tip flycheck flx-ido flx fish-mode fill-column-indicator feature-mode fasd grizzl fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-snipe evil-search-highlight-persist evil-numbers evil-mc evil-matchit evil-magit magit magit-popup git-commit with-editor evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-commentary evil-args evil-anzu anzu evil ess-smart-equals ess-R-object-popup ess-R-data-view undo-tree spacemacs-theme quelpa goto-chg evil-unimpaired ess eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav dumb-jump drupal-mode disaster diminish diff-hl define-word cython-mode ctable company-web company-tern company-statistics company-shell company-quickhelp company-c-headers company-auctex company-anaconda common-lisp-snippets command-log-mode column-enforce-mode color-identifiers-mode coffee-mode cmake-mode clojure-snippets clj-refactor clean-aindent-mode clang-format cider-eval-sexp-fu chruby bundler bind-map bind-key auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile auctex-latexmk arduino-mode aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell 2048-game))))
+    (editorconfig tide typescript-mode dockerfile-mode docker tablist docker-tramp org-projectile org-present org-pomodoro alert log4e gntp org-download htmlize gnuplot key-chord zeal-at-point yapfify yaml-mode xterm-color ws-butler wolfram-mode window-numbering which-key web-mode web-beautify wakatime-mode volatile-highlights uuidgen use-package typit mmt toc-org thrift tagedit stickyfunc-enhance stan-mode srefactor sql-indent spray spotify spaceline powerline smex smeargle slime slim-mode shell-pop selectric-mode scss-mode scad-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe restart-emacs rbenv ranger rainbow-mode rainbow-identifiers rainbow-delimiters qml-mode pyvenv pytest pyenv-mode py-isort projectile-rails rake prodigy popwin pony-mode pip-requirements phpunit phpcbf php-extras php-auto-yasnippets persp-mode pcre2el paradox pandoc-mode pacmacs ox-pandoc ht orgit org org-plus-contrib org-bullets open-junk-file neotree mwim multi-term move-text mmm-mode matlab-mode markdown-toc markdown-mode magit-gitflow macrostep lorem-ipsum livid-mode skewer-mode simple-httpd live-py-mode linum-relative link-hint less-css-mode json-mode json-snatcher json-reformat js2-refactor js2-mode js-doc jade-mode info+ indent-guide ido-vertical-mode ibuffer-projectile hy-mode hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation help-fns+ helm-themes helm-swoop helm-spotify multi helm-pydoc helm-projectile helm-mode-manager helm-make projectile helm-gitignore request helm-flx helm-descbinds helm-dash helm-css-scss helm-company helm-c-yasnippet helm-ag haml-mode google-translate golden-ratio gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md flyspell-correct-helm flyspell-correct flycheck-pos-tip flycheck flx-ido flx fish-mode fill-column-indicator feature-mode fasd grizzl fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-snipe evil-search-highlight-persist evil-numbers evil-mc evil-matchit evil-magit magit magit-popup git-commit with-editor evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-commentary evil-args evil-anzu anzu evil ess-smart-equals ess-R-object-popup ess-R-data-view undo-tree spacemacs-theme quelpa goto-chg evil-unimpaired ess eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav dumb-jump drupal-mode disaster diminish diff-hl define-word cython-mode ctable company-web company-tern company-statistics company-shell company-quickhelp company-c-headers company-auctex company-anaconda common-lisp-snippets command-log-mode column-enforce-mode color-identifiers-mode coffee-mode cmake-mode clojure-snippets clj-refactor clean-aindent-mode clang-format cider-eval-sexp-fu chruby bundler bind-map bind-key auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile auctex-latexmk arduino-mode aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell 2048-game))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
