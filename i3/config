@@ -183,18 +183,19 @@ bindsym $mod+shift+F10 move container to workspace 
 
 
 # Assignments
-assign [class="Vlc"] → 
-assign [class="XBMC"] → 
-assign [class="Amarok"] → 
-assign [class="Spotify"] → 
-assign [class="Firefox Developer Edition"] → 
-assign [class="Firefox"] → 
-assign [class="Chromium"] → 
+assign [class="Emacs"] → 
 assign [class="Eclipse"] → 
 assign [class="Nautilus"] → 
+assign [class="Firefox Developer Edition"] → 
 assign [class="Firefox"] → 
+assign [title="chromium"] → 
+assign [class="Firefox"] → 
+assign [class="Amarok"] → 
+assign [class="Spotify"] → 
 assign [class="Pidgin"] → 
-assign [class="Telegram"] → 
+assign [title="telegram"] → 
+assign [class="Vlc"] → 
+assign [class="XBMC"] → 
 
 # Assing floating modes
 # for_window [class="Osdlyrics"] floating enable
