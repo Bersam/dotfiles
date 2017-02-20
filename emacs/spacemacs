@@ -106,6 +106,7 @@ values."
      command-log
      dash
      fasd
+     nginx
      org
      pandoc
      ranger
