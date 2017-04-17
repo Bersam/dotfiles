@@ -1,63 +1,55 @@
-Overview
-====================
-This is most **dotfiles** that i use on my home's PC, my laptop and my PC at work!
->   Bersam Karbasion,
->   Ali Vakilzadeh,
->   Samim Pezeshki,
->   Omid Momenzadeh
+# Overview
+This is most **dotfiles** that i use on my servers!
 
 
-aria2/
----------------------
+# Installation
+
+## Git Modules
+> git submodule init
+> git submodule update
+
+## Package Installation
+
+### Ubuntu
+> sudo apt install aria2 bash fish zsh git hg tmux vim
+
+
+## Create Links
+
+### aria2/
 > ln -s /home/$USER/dotfiles/aria2 /home/$USER/.aria2
 
-bash/
----------------------
+### bash/
 > ln -s /home/$USER/dotfiles/bash /home/$USER/.bash
 
-bin/
----------------------
+### bin/
 > ln -s /home/$USER/dotfiles/bin /home/$USER/.local/bin
 
-crontab/
----------------------
-> Use crontab -e`
-
-emacs/
----------------------
-> ln -s /home/$USER/dotfiles/emacs.d /home/$USER/.emacs.d
-
-fish/
----------------------
+### fish/
 > ln -s /home/$USER/dotfiles/fish /home/$USER/.config/fish
 
-git/
----------------------
+### git/
 > ln -s /home/$USER/dotfiles/git /home/$USER/.config/git
 
-hg/
----------------------
+### hg/
 > ln -s /home/$USER/dotfiles/hg /home/$USER/.hg
 
-i3/
----------------------
-> ln -s /home/$USER/dotfiles/i3 /home/$USER/.i3
-
-komodo/
----------------------
-> ln -s /home/$USER/dotfiles/komodo /home/$USER/.komodoedit/8.0
-
-tmux/
----------------------
+### tmux/
 > ln -s /home/$USER/dotfiles/tmux/tmux.conf /home/$USER/.tmux/.tmux.conf
-> Or
+> Or (in case you're using byobu)
 > ln -s /home/$USER/dotfiles/tmux/tmux.conf /home/$USER/.byobu/.tmux.conf
 
-vim/
----------------------
+### vim/
 > ln -s /home/$USER/dotfiles/vim /home/$USER/.vim
 
-zsh/oh-my-zsh/
----------------------
+### zsh/oh-my-zsh/
 > ln -s /home/$USER/dotfiles/zsh/oh-my-zsh /home/$USER/.oh-my-zsh
 > ln -s /home/$USER/dotfiles/zsh/zshrc /home/$USER/.zshrc
+
+
+# Collaborators
+* Bersam Karbasion
+* Ali Vakilzadeh,
+* Samim Pezeshki,
+* Omid Momenzadeh
+
