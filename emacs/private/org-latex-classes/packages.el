@@ -58,7 +58,7 @@
 \\usepackage{amssymb}
 \\usepackage{hyperref}
 \\usepackage{mathpazo}
-\\usepackage{color}
+\\usepackage{xcolor}
 \\usepackage{enumerate}
 \\definecolor{bg}{rgb}{0.95,0.95,0.95}
 \\tolerance=1000
@@ -68,7 +68,13 @@
 \\linespread{1.1}
 \\BeforeBeginEnvironment{minted}{\\vspace{3mm}}
 \\AfterEndEnvironment{minted}{\\vspace{3mm}}
-\\hypersetup{pdfborder=0 0 0}"
+\\hypersetup{pdfborder=0 0 0}
+\\usepackage{xepersian}
+\\settextfont{XB Yas}
+\\setmainfont[Script=Arabic,Numbers=Lining]{XB Yas}
+\\usepackage{eukdate}
+\\renewcommand{\\mkbibbrackets}[1]{]#1[}
+\\setLTR"
                    ("\\section{%s}" . "\\section*{%s}")
                    ("\\subsection{%s}" . "\\subsection*{%s}")
                    ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
@@ -83,7 +89,7 @@
 \\usepackage{graphicx}
 \\usepackage{geometry}
 \\usepackage{float}
-\\usepackage{wrapfig}
+
 \\usepackage{rotating}
 \\usepackage[normalem]{ulem}
 \\usepackage{amsmath}
@@ -93,7 +99,7 @@
 \\usepackage{amssymb}
 \\usepackage{hyperref}
 \\usepackage{enumerate}
-\\usepackage{color}
+\\usepackage{xcolor}
 \\definecolor{bg}{rgb}{0.95,0.95,0.95}
 \\geometry{a4paper, textwidth=6.5in, textheight=10in,
             marginparsep=7pt, marginparwidth=.6in}
@@ -132,7 +138,7 @@
 \\usepackage{amssymb}
 \\usepackage{hyperref}
 \\usepackage{mathpazo}
-\\usepackage{color}
+\\usepackage{xcolor}
 \\usepackage{enumerate}
 \\definecolor{bg}{rgb}{0.95,0.95,0.95}
 \\tolerance=1000

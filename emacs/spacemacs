@@ -31,6 +31,8 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     csv
+     go
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -99,7 +101,7 @@ values."
      ;; Source control
      (git :variables
           git-gutter-use-fringe t
-          git-magit-status-fullscreen t)
+          git-magit-status-fullscreen nil)
      version-control
 
      ;; Tools
@@ -109,7 +111,10 @@ values."
      nginx
      org
      pandoc
-     ranger
+     restclient
+     (ranger :variables
+             ranger-override-dired t
+             ranger-show-preview t)
 
      ;; (wakatime :variables
      ;;           wakatime-api-key  "146ba847-bc9d-4628-854f-3e63bc5dc2f3"
@@ -121,10 +126,9 @@ values."
                  evil-snipe-enable-alternate-f-and-t-behaviors t)
      vim-empty-lines
      vinegar
-
      ;; Private:
      bersam-defaults
-     semicolon
+     ;; semicolon
      ;; org-latex-classes
      ;; org-psamim
      )
@@ -234,6 +238,8 @@ values."
    ;; The key used for Emacs commands (M-x) (after pressing on the leader key).
    ;; (default "SPC")
    dotspacemacs-emacs-command-key "SPC"
+   ;; The key used for Vim Ex commands (default ":")
+   dotspacemacs-ex-command-key ":"
    ;; These variables control whether separate commands are bound in the GUI to
    ;; the key pairs C-i, TAB and C-m, RET.
    ;; Setting it to a non-nil value, allows for separate commands under <C-i>
@@ -327,8 +333,18 @@ values."
    ;; scrolling overrides the default behavior of Emacs which recenters point
    ;; when it reaches the top or bottom of the screen. (default t)
    dotspacemacs-smooth-scrolling t
-   ;; If non nil line numbers are turned on in all `prog-mode' and `text-mode'
-   ;; derivatives. If set to `relative', also turns on relative line numbers.
+   ;; Control line numbers activation.
+   ;; If set to `t' or `relative' line numbers are turned on in all `prog-mode' and
+   ;; `text-mode' derivatives. If set to `relative', line numbers are relative.
+   ;; This variable can also be set to a property list for finer control:
+   ;; '(:relative nil
+   ;;   :disabled-for-modes dired-mode
+   ;;                       doc-view-mode
+   ;;                       markdown-mode
+   ;;                       org-mode
+   ;;                       pdf-view-mode
+   ;;                       text-mode
+   ;;   :size-limit-kb 1000)
    ;; (default nil)
    dotspacemacs-line-numbers nil
    ;; Code folding method. Possible values are `evil' and `origami'.
@@ -382,45 +398,35 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-  (setenv "IPY_TEST_SIMPLE_PROMPT" "1")
-  (prodigy-define-service
-    :name "Insta Follow Server"
-    :command "node-dev"
-    :args '("app.js")
-    :cwd "~/works/bersam/projects/instafollow/api"
-    :tags '(work instafollow)
-    :kill-signal 'sigkill
-    :kill-process-buffer-on-stop t)
-  (prodigy-define-service
-    :name "Insta Follow Dashboard"
-    :command "npm"
-    :args '("start")
-    :cwd "~/works/bersam/projects/instafollow/dashboard"
-    :tags '(work instafollow)
-    :kill-signal 'sigkill
-    :kill-process-buffer-on-stop t)
-  (prodigy-define-service
-    :name "Insta Follow Redis"
-    :command "redis-server"
-    :args '("--port" "7777")
-    :cwd "~/works/bersam/projects/instafollow/api"
-    :tags '(work instafollow)
-    :kill-signal 'sigkill
-    :kill-process-buffer-on-stop t)
-  (exec-path-from-shell-copy-env "SSH_AGENT_PID")
-  (exec-path-from-shell-copy-env "SSH_AUTH_SOCK")
-  (setq-default
-   ;; js2-mode
-   js2-basic-offset 2
-   js-indent-level 2
-   ;; web-mode
-   css-indent-offset 2
-   ;; react-mode
-   react-indent-level 2
-   web-mode-markup-indent-offset 2
-   web-mode-css-indent-offset 2
-   web-mode-code-indent-offset 2
-   web-mode-attr-indent-offset 2)
+  ;; (setenv "IPY_TEST_SIMPLE_PROMPT" "1")
+  (setq python-shell-interpreter "ipython" python-shell-interpreter-args "--simple-prompt --pprint")
+  ;; (prodigy-define-service
+  ;;   :name "Insta Follow Server"
+  ;;   :command "node-dev"
+  ;;   :args '("app.js")
+  ;;   :cwd "~/works/bersam/projects/instafollow/api"
+  ;;   :tags '(work instafollow)
+  ;;   :kill-signal 'sigkill
+  ;;   :kill-process-buffer-on-stop t)
+  ;; (exec-path-from-shell-copy-env "SSH_AGENT_PID")
+  ;; (exec-path-from-shell-copy-env "SSH_AUTH_SOCK")
+  ;; (setq-default
+  ;;  ;; js2-mode
+  ;;  js2-basic-offset 2
+  ;;  js-indent-level 2
+  ;;  ;; web-mode
+  ;;  css-indent-offset 2
+  ;;  ;; react-mode
+  ;;  react-indent-level 2
+  ;;  web-mode-markup-indent-offset 2
+  ;;  web-mode-css-indent-offset 2
+  ;;  web-mode-code-indent-offset 2
+  ;;  web-mode-attr-indent-offset 2)
+  (push '("\\.js\\'" . react-mode) auto-mode-alist)
+
+  (setq-default dotspacemacs-configuration-layers
+                '((python :variables python-test-runner 'pytest)))
+
   (defun my/use-eslint-from-node-modules ()
     (let* ((root (locate-dominating-file
                   (or (buffer-file-name) default-directory)
@@ -450,7 +456,7 @@ you should place your code here."
      ("\\.pdf\\'" . "zathura %s"))))
  '(package-selected-packages
    (quote
-    (tern highlight company helm helm-core yasnippet php-mode inf-ruby nginx-mode slime-company pug-mode minitest insert-shebang hide-comnt hydra inflections multiple-cursors cider seq spinner clojure-mode auto-complete auctex anaconda-mode editorconfig tide typescript-mode dockerfile-mode docker tablist docker-tramp org-projectile org-present org-pomodoro alert log4e gntp org-download htmlize gnuplot key-chord zeal-at-point yapfify yaml-mode xterm-color ws-butler wolfram-mode window-numbering which-key web-mode web-beautify wakatime-mode volatile-highlights uuidgen use-package typit mmt toc-org thrift tagedit stickyfunc-enhance stan-mode srefactor sql-indent spray spotify spaceline powerline smex smeargle slime slim-mode shell-pop selectric-mode scss-mode scad-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe restart-emacs rbenv ranger rainbow-mode rainbow-identifiers rainbow-delimiters qml-mode pyvenv pytest pyenv-mode py-isort projectile-rails rake prodigy popwin pony-mode pip-requirements phpunit phpcbf php-extras php-auto-yasnippets persp-mode pcre2el paradox pandoc-mode pacmacs ox-pandoc ht orgit org org-plus-contrib org-bullets open-junk-file neotree mwim multi-term move-text mmm-mode matlab-mode markdown-toc markdown-mode magit-gitflow macrostep lorem-ipsum livid-mode skewer-mode simple-httpd live-py-mode linum-relative link-hint less-css-mode json-mode json-snatcher json-reformat js2-refactor js2-mode js-doc jade-mode info+ indent-guide ido-vertical-mode ibuffer-projectile hy-mode hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation help-fns+ helm-themes helm-swoop helm-spotify multi helm-pydoc helm-projectile helm-mode-manager helm-make projectile helm-gitignore request helm-flx helm-descbinds helm-dash helm-css-scss helm-company helm-c-yasnippet helm-ag haml-mode google-translate golden-ratio gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md flyspell-correct-helm flyspell-correct flycheck-pos-tip flycheck flx-ido flx fish-mode fill-column-indicator feature-mode fasd grizzl fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-snipe evil-search-highlight-persist evil-numbers evil-mc evil-matchit evil-magit magit magit-popup git-commit with-editor evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-commentary evil-args evil-anzu anzu evil ess-smart-equals ess-R-object-popup ess-R-data-view undo-tree spacemacs-theme quelpa goto-chg evil-unimpaired ess eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav dumb-jump drupal-mode disaster diminish diff-hl define-word cython-mode ctable company-web company-tern company-statistics company-shell company-quickhelp company-c-headers company-auctex company-anaconda common-lisp-snippets command-log-mode column-enforce-mode color-identifiers-mode coffee-mode cmake-mode clojure-snippets clj-refactor clean-aindent-mode clang-format cider-eval-sexp-fu chruby bundler bind-map bind-key auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile auctex-latexmk arduino-mode aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell 2048-game))))
+    (restclient-helm ob-restclient company-restclient ob-http restclient know-your-http-well org-category-capture csv-mode company-go go-guru go-eldoc go-mode fuzzy winum unfill julia-mode web-completion-data dash-functional pos-tip edn paredit peg eval-sexp-fu queue pkg-info epl packed pythonic f s avy async popup package-build tern highlight company helm helm-core yasnippet php-mode inf-ruby nginx-mode slime-company pug-mode minitest insert-shebang hide-comnt hydra inflections multiple-cursors cider seq spinner clojure-mode auto-complete auctex anaconda-mode editorconfig tide typescript-mode dockerfile-mode docker tablist docker-tramp org-projectile org-present org-pomodoro alert log4e gntp org-download htmlize gnuplot key-chord zeal-at-point yapfify yaml-mode xterm-color ws-butler wolfram-mode window-numbering which-key web-mode web-beautify wakatime-mode volatile-highlights uuidgen use-package typit mmt toc-org thrift tagedit stickyfunc-enhance stan-mode srefactor sql-indent spray spotify spaceline powerline smex smeargle slime slim-mode shell-pop selectric-mode scss-mode scad-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe restart-emacs rbenv ranger rainbow-mode rainbow-identifiers rainbow-delimiters qml-mode pyvenv pytest pyenv-mode py-isort projectile-rails rake prodigy popwin pony-mode pip-requirements phpunit phpcbf php-extras php-auto-yasnippets persp-mode pcre2el paradox pandoc-mode pacmacs ox-pandoc ht orgit org org-plus-contrib org-bullets open-junk-file neotree mwim multi-term move-text mmm-mode matlab-mode markdown-toc markdown-mode magit-gitflow macrostep lorem-ipsum livid-mode skewer-mode simple-httpd live-py-mode linum-relative link-hint less-css-mode json-mode json-snatcher json-reformat js2-refactor js2-mode js-doc jade-mode info+ indent-guide ido-vertical-mode ibuffer-projectile hy-mode hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation help-fns+ helm-themes helm-swoop helm-spotify multi helm-pydoc helm-projectile helm-mode-manager helm-make projectile helm-gitignore request helm-flx helm-descbinds helm-dash helm-css-scss helm-company helm-c-yasnippet helm-ag haml-mode google-translate golden-ratio gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md flyspell-correct-helm flyspell-correct flycheck-pos-tip flycheck flx-ido flx fish-mode fill-column-indicator feature-mode fasd grizzl fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-snipe evil-search-highlight-persist evil-numbers evil-mc evil-matchit evil-magit magit magit-popup git-commit with-editor evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-commentary evil-args evil-anzu anzu evil ess-smart-equals ess-R-object-popup ess-R-data-view undo-tree spacemacs-theme quelpa goto-chg evil-unimpaired ess eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav dumb-jump drupal-mode disaster diminish diff-hl define-word cython-mode ctable company-web company-tern company-statistics company-shell company-quickhelp company-c-headers company-auctex company-anaconda common-lisp-snippets command-log-mode column-enforce-mode color-identifiers-mode coffee-mode cmake-mode clojure-snippets clj-refactor clean-aindent-mode clang-format cider-eval-sexp-fu chruby bundler bind-map bind-key auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile auctex-latexmk arduino-mode aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell 2048-game))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

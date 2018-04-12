@@ -43,7 +43,7 @@ exec --no-startup-id "\systemctl --user start feh-wallpaper.service"
 exec --no-startup-id "\systemctl --user start xautolock.service"
 
 # ShadowSocks
-exec --no-startup-id "sslocal -c ~/works/cyber3.conf"
+exec --no-startup-id "sslocal -c ~/works/cyber6.conf.old"
 
 # Guake
 exec --no-startup-id "guake &"
@@ -183,7 +183,7 @@ bindsym $mod+shift+F10 move container to workspace 
 
 
 # Assignments
-assign [class="Emacs"] → 
+#assign [class="Emacs"] → 
 assign [class="Eclipse"] → 
 assign [class="Nautilus"] → 
 assign [class="Firefox Developer Edition"] → 
@@ -280,7 +280,7 @@ for_window [class="(?i)"] focus
 bindsym $mod+shift+s move scratchpad
 bindsym $mod+shift+o scratchpad show
 #bindsym F12 scratchpad show
-bindsym $mod+x [class="Emacs"] scratchpad show
+#bindsym $mod+x [class="Emacs"] scratchpad show
 
 # Shortcuts
 bindsym $mod+slash exec chromium --show-app-list
