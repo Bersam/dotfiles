@@ -30,7 +30,7 @@ values."
    dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(
+   '(asciidoc
      csv
      go
      ;; ----------------------------------------------------------------
@@ -86,7 +86,9 @@ values."
      ess
      major-modes
      html
-     javascript
+     (javascript :variables
+                 javascript-fmt-tool 'web-beautify
+                 javascript-backend 'lsp)
      latex
      markdown
      octave
@@ -369,7 +371,7 @@ values."
    ;; List of search tool executable names. Spacemacs uses the first installed
    ;; tool of the list. Supported tools are `ag', `pt', `ack' and `grep'.
    ;; (default '("ag" "pt" "ack" "grep"))
-   dotspacemacs-search-tools '("ag" "pt" "ack" "grep")
+   dotspacemacs-search-tools '("rg" "ag" "pt" "ack" "grep")
    ;; The default package repository used if no explicit repository has been
    ;; specified with an installed package.
    ;; Not used for now. (default nil)
@@ -412,19 +414,19 @@ you should place your code here."
   ;;   :kill-process-buffer-on-stop t)
   ;; (exec-path-from-shell-copy-env "SSH_AGENT_PID")
   ;; (exec-path-from-shell-copy-env "SSH_AUTH_SOCK")
-  ;; (setq-default
-  ;;  ;; js2-mode
-  ;;  js2-basic-offset 2
-  ;;  js-indent-level 2
-  ;;  ;; web-mode
-  ;;  css-indent-offset 2
-  ;;  ;; react-mode
-  ;;  react-indent-level 2
-  ;;  web-mode-markup-indent-offset 2
-  ;;  web-mode-css-indent-offset 2
-  ;;  web-mode-code-indent-offset 2
-  ;;  web-mode-attr-indent-offset 2)
-  (push '("\\.js\\'" . react-mode) auto-mode-alist)
+  (setq-default
+   ;; js2-mode
+   js2-basic-offset 2
+   js-indent-level 2
+   ;; web-mode
+   css-indent-offset 2
+   ;; react-mode
+   react-indent-level 2
+   web-mode-markup-indent-offset 2
+   web-mode-css-indent-offset 2
+   web-mode-code-indent-offset 2
+   web-mode-attr-indent-offset 2)
+  (push '("\\.js\\'" . rjsx-mode) auto-mode-alist)
 
   (setq-default dotspacemacs-configuration-layers
                 '((python :variables python-test-runner 'pytest)))
@@ -444,54 +446,3 @@ you should place your code here."
   (setq neo-vc-integration '(face))
   (direnv-mode)
   )
-
-;; Do not write anything past this comment. This is where Emacs will
-;; auto-generate custom variable definitions.
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(org-agenda-files (quote ("~/Notes/todo.org")))
- '(org-file-apps
-   (quote
-    ((auto-mode . emacs)
-     ("\\.mm\\'" . default)
-     ("\\.x?html?\\'" . default)
-     ("\\.pdf\\'" . "zathura %s"))))
- '(package-selected-packages
-   (quote
-    (company-emacs-eclim eclim direnv org-mime helm-spotify-plus ghub let-alist restclient-helm ob-restclient company-restclient ob-http restclient know-your-http-well org-category-capture csv-mode company-go go-guru go-eldoc go-mode fuzzy winum unfill julia-mode web-completion-data dash-functional pos-tip edn paredit peg eval-sexp-fu queue pkg-info epl packed pythonic f s avy async popup package-build tern highlight company helm helm-core yasnippet php-mode inf-ruby nginx-mode slime-company pug-mode minitest insert-shebang hide-comnt hydra inflections multiple-cursors cider seq spinner clojure-mode auto-complete auctex anaconda-mode editorconfig tide typescript-mode dockerfile-mode docker tablist docker-tramp org-projectile org-present org-pomodoro alert log4e gntp org-download htmlize gnuplot key-chord zeal-at-point yapfify yaml-mode xterm-color ws-butler wolfram-mode window-numbering which-key web-mode web-beautify wakatime-mode volatile-highlights uuidgen use-package typit mmt toc-org thrift tagedit stickyfunc-enhance stan-mode srefactor sql-indent spray spotify spaceline powerline smex smeargle slime slim-mode shell-pop selectric-mode scss-mode scad-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe restart-emacs rbenv ranger rainbow-mode rainbow-identifiers rainbow-delimiters qml-mode pyvenv pytest pyenv-mode py-isort projectile-rails rake prodigy popwin pony-mode pip-requirements phpunit phpcbf php-extras php-auto-yasnippets persp-mode pcre2el paradox pandoc-mode pacmacs ox-pandoc ht orgit org org-plus-contrib org-bullets open-junk-file neotree mwim multi-term move-text mmm-mode matlab-mode markdown-toc markdown-mode magit-gitflow macrostep lorem-ipsum livid-mode skewer-mode simple-httpd live-py-mode linum-relative link-hint less-css-mode json-mode json-snatcher json-reformat js2-refactor js2-mode js-doc jade-mode info+ indent-guide ido-vertical-mode ibuffer-projectile hy-mode hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation help-fns+ helm-themes helm-swoop helm-spotify multi helm-pydoc helm-projectile helm-mode-manager helm-make projectile helm-gitignore request helm-flx helm-descbinds helm-dash helm-css-scss helm-company helm-c-yasnippet helm-ag haml-mode google-translate golden-ratio gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md flyspell-correct-helm flyspell-correct flycheck-pos-tip flycheck flx-ido flx fish-mode fill-column-indicator feature-mode fasd grizzl fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-snipe evil-search-highlight-persist evil-numbers evil-mc evil-matchit evil-magit magit magit-popup git-commit with-editor evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-commentary evil-args evil-anzu anzu evil ess-smart-equals ess-R-object-popup ess-R-data-view undo-tree spacemacs-theme quelpa goto-chg evil-unimpaired ess eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav dumb-jump drupal-mode disaster diminish diff-hl define-word cython-mode ctable company-web company-tern company-statistics company-shell company-quickhelp company-c-headers company-auctex company-anaconda common-lisp-snippets command-log-mode column-enforce-mode color-identifiers-mode coffee-mode cmake-mode clojure-snippets clj-refactor clean-aindent-mode clang-format cider-eval-sexp-fu chruby bundler bind-map bind-key auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile auctex-latexmk arduino-mode aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell 2048-game))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-(defun dotspacemacs/emacs-custom-settings ()
-  "Emacs custom settings.
-This is an auto-generated function, do not modify its content directly, use
-Emacs customize menu instead.
-This function is called at the very end of Spacemacs initialization."
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(org-agenda-files (quote ("~/Notes/todo.org")))
- '(org-file-apps
-   (quote
-    ((auto-mode . emacs)
-     ("\\.mm\\'" . default)
-     ("\\.x?html?\\'" . default)
-     ("\\.pdf\\'" . "zathura %s"))))
- '(package-selected-packages
-   (quote
-    (yasnippet-snippets vala-snippets vala-mode symon sudoku string-inflection spaceline-all-the-icons all-the-icons memoize solarized-theme sayid ruby-refactor ruby-hash-syntax rjsx-mode pkgbuild-mode pippel pipenv password-generator overseer nameless mvn meghanada maven-test-mode logcat kivy-mode json-navigator hierarchy importmagic epc concurrent deferred impatient-mode hoon-mode helm-xref helm-rtags helm-purpose window-purpose imenu-list groovy-mode groovy-imports pcache gradle-mode google-c-style godoctor go-tag go-rename flycheck-rtags flycheck-bashate evil-lion evil-cleverparens ensime sbt-mode scala-mode ebuild-mode counsel-projectile counsel swiper ivy company-rtags rtags company-php ac-php-core xcscope clojure-cheatsheet centered-cursor-mode browse-at-remote dash font-lock+ company-emacs-eclim eclim direnv org-mime helm-spotify-plus ghub let-alist restclient-helm ob-restclient company-restclient ob-http restclient know-your-http-well org-category-capture csv-mode company-go go-guru go-eldoc go-mode fuzzy winum unfill julia-mode web-completion-data dash-functional pos-tip edn paredit peg eval-sexp-fu queue pkg-info epl packed pythonic f s avy async popup package-build tern highlight company helm helm-core yasnippet php-mode inf-ruby nginx-mode slime-company pug-mode minitest insert-shebang hide-comnt hydra inflections multiple-cursors cider seq spinner clojure-mode auto-complete auctex anaconda-mode editorconfig tide typescript-mode dockerfile-mode docker tablist docker-tramp org-projectile org-present org-pomodoro alert log4e gntp org-download htmlize gnuplot key-chord zeal-at-point yapfify yaml-mode xterm-color ws-butler wolfram-mode window-numbering which-key web-mode web-beautify wakatime-mode volatile-highlights uuidgen use-package typit mmt toc-org thrift tagedit stickyfunc-enhance stan-mode srefactor sql-indent spray spotify spaceline powerline smex smeargle slime slim-mode shell-pop selectric-mode scss-mode scad-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe restart-emacs rbenv ranger rainbow-mode rainbow-identifiers rainbow-delimiters qml-mode pyvenv pytest pyenv-mode py-isort projectile-rails rake prodigy popwin pony-mode pip-requirements phpunit phpcbf php-extras php-auto-yasnippets persp-mode pcre2el paradox pandoc-mode pacmacs ox-pandoc ht orgit org org-plus-contrib org-bullets open-junk-file neotree mwim multi-term move-text mmm-mode matlab-mode markdown-toc markdown-mode magit-gitflow macrostep lorem-ipsum livid-mode skewer-mode simple-httpd live-py-mode linum-relative link-hint less-css-mode json-mode json-snatcher json-reformat js2-refactor js2-mode js-doc jade-mode info+ indent-guide ido-vertical-mode ibuffer-projectile hy-mode hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation help-fns+ helm-themes helm-swoop helm-spotify multi helm-pydoc helm-projectile helm-mode-manager helm-make projectile helm-gitignore request helm-flx helm-descbinds helm-dash helm-css-scss helm-company helm-c-yasnippet helm-ag haml-mode google-translate golden-ratio gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md flyspell-correct-helm flyspell-correct flycheck-pos-tip flycheck flx-ido flx fish-mode fill-column-indicator feature-mode fasd grizzl fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-snipe evil-search-highlight-persist evil-numbers evil-mc evil-matchit evil-magit magit magit-popup git-commit with-editor evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-commentary evil-args evil-anzu anzu evil ess-smart-equals ess-R-object-popup ess-R-data-view undo-tree spacemacs-theme quelpa goto-chg evil-unimpaired ess eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav dumb-jump drupal-mode disaster diminish diff-hl define-word cython-mode ctable company-web company-tern company-statistics company-shell company-quickhelp company-c-headers company-auctex company-anaconda common-lisp-snippets command-log-mode column-enforce-mode color-identifiers-mode coffee-mode cmake-mode clojure-snippets clj-refactor clean-aindent-mode clang-format cider-eval-sexp-fu chruby bundler bind-map bind-key auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile auctex-latexmk arduino-mode aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell 2048-game))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-)
